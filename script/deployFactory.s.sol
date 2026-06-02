@@ -5,15 +5,10 @@ import {Script} from "forge-std/Script.sol";
 import {Factory} from "../src/factory.sol";
 
 contract deployFactory is Script {
-    Factory public factory;
-
-    function setUp() public {}
-
-    function run() public {
+    function run() external returns (Factory) {
         vm.startBroadcast();
-
-        factory = new Factory();
-
+        Factory factory = new Factory();
         vm.stopBroadcast();
+        return factory;
     }
 }
