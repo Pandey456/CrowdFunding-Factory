@@ -64,6 +64,22 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+
+### This is my first non tutorial project
+### DAY - 1 
+```
+Created Foundry Project
+Created both Smart Contract, one creating campaign
+Factory Smart contract as well
+------
+Issues:
+ 1. function should be payable to receive funds
+ 2. (bool success,)=campaign.owner.call{value:balance}("");
+ 3. and issues in testing, setup shd be external,
+ 4. "Factory public factory;" should be outside setup etc
+```
+### Day 2
 ### Private Key - Deployment without .env file having private key.
 
 1. Initiating 
@@ -85,18 +101,4 @@ forge script script/deployFactory.s.sol --rpc-url https://sepolia.infura.io/v3/Y
 or using public rpc :
 ```
 forge script script/deployFactory.s.sol --rpc-url https://eth-sepolia.g.alchemy.com/v2/demo --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
-```
-
-### This is my first non tutorial project
-### DAY - 1 
-```
-Created Foundry Project
-Created both Smart Contract, one creating campaign
-Factory Smart contract as well
-------
-Issues:
- 1. function should be payable to receive funds
- 2. (bool success,)=campaign.owner.call{value:balance}("");
- 3. and issues in testing, setup shd be external,
- 4. "Factory public factory;" should be outside setup etc
 ```
