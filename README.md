@@ -64,6 +64,29 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+### Private Key - Deployment without .env file having private key.
+
+1. Initiating 
+```
+$ cast wallet import <keyName> --interactive
+```
+2. Put in Private key => copy and paste your Private key
+3. Give a Password => Give a new Password 
+4. success message
+5. in order to deploy use:
+```
+forge script script/deployFactory.sol --rpc-url http://sepolia.infura.io --account <keyName> --sender <wallet Address(of which private key you provided)> --broadcast
+```
+in this case it was:
+```
+forge script script/deployFactory.s.sol --rpc-url https://sepolia.infura.io/v3/YOUR_INFURA_API_KEY --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
+
+```
+or using public rpc :
+```
+forge script script/deployFactory.s.sol --rpc-url https://eth-sepolia.g.alchemy.com/v2/demo --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
+```
+
 ### This is my first non tutorial project
 ### DAY - 1 
 ```
