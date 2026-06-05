@@ -5,6 +5,7 @@ import {quickStarter} from "./quickStarter.sol";
 
 contract Factory {
     mapping(address owner => address[] campaign) public campaigns;
+    address[] public allCampaign;
 
     function CreateACampaign(
         uint256 fee,
@@ -16,6 +17,7 @@ contract Factory {
         address owner = msg.sender;
         quickStarter qs = new quickStarter(owner, fee, title);
         campaigns[msg.sender].push(address(qs));
+        allCampaign.push(address(qs));
     }
 
     //helper
@@ -23,5 +25,9 @@ contract Factory {
         address _user
     ) public view returns (address[] memory) {
         return campaigns[_user];
+    }
+
+    function getAllCampaign() public returns (address[] memory) {
+        return allCampaign;
     }
 }

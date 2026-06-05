@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campaigns</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://esm.sh; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://esm.sh; connect-src 'self' https://*.ethers.space wss://*.ethers.space https://*.infura.io https://*.alchemy.com;"> -->
     <script src="./index-js.js" type="module"></script>
 </head>
 <body>
     <button id="connect_btn">Connect</button>
+    <br>
+    <hr>
+    <form id="frm_campgn">
+        <label for="title">title</label>
+        <input id="title"/>
+        <label for="goal">Goal</label>
+        <input id="goal"/>
+        <button id="campgn">Create Campaign</button>
+
+    </form>
+    <br>
+    <div id="display"></div>
     
     
 </body>
