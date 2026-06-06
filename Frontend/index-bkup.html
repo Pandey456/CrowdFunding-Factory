@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://esm.sh; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://esm.sh; connect-src 'self' https://*.ethers.space wss://*.ethers.space https://*.infura.io https://*.alchemy.com;"> -->
+    <!-- <script src="./index-js.js" type="module"></script> -->
+    <style>
+    #display{
+        display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    }
+    .campaign-card {
+        background: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        max-width:20%;
+        overflow-wrap: break-word;  
+        word-break: break-word;   
+        white-space: normal;
+    }
+    #connect_btn {
+        position: absolute;  
+    top: 16px;         
+    right: 16px;       
+    margin: 0;       
+    }
+    h3{
+        margin:0;
+    }
+
+   
+    #frm_campgn {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;          
+        gap: 8px;
+    }
+    #frm_campgn button {
+        margin-top: 8px;
+        align-self: flex-start;     
+    }
+    </style>
+</head>
+<body>
+    <button id="connect_btn">Connect</button>
+    <br>
+    
+    <form id="frm_campgn">
+        <label for="title">Title</label>
+        <input id="title"/>
+        <label for="goal">Goal</label>
+        <input id="goal"/>
+        <button id="campgn">Create Campaign</button>
+
+    </form>
+    <br>
+    <div id="display"></div>
+    
+    
+</body>
+
+
+</html>
