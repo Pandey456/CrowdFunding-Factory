@@ -87,11 +87,13 @@ or using public rpc :
 ```
 forge script script/deployFactory.s.sol --rpc-url https://eth-sepolia.g.alchemy.com/v2/demo --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
 ```
-### Test Coverage
+## Test Coverage
 ```
 forge coverage
 ```
+### Test Coverage
 
+```text
 ╭----------------------------+-----------------+-----------------+---------------+---------------╮
 | File                       | % Lines         | % Statements    | % Branches    | % Funcs       |
 +================================================================================================+
