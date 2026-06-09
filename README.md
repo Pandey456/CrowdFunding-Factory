@@ -65,21 +65,6 @@ $ anvil --help
 $ cast --help
 ```
 
-
-### This is my first non tutorial project
-### DAY - 1 
-```
-Created Foundry Project
-Created both Smart Contract, one creating campaign
-Factory Smart contract as well
-------
-Issues:
- 1. function should be payable to receive funds
- 2. (bool success,)=campaign.owner.call{value:balance}("");
- 3. and issues in testing, setup shd be external,
- 4. "Factory public factory;" should be outside setup etc
-```
-### Day 2
 ### Private Key - Deployment without .env file having private key.
 
 1. Initiating 
@@ -102,3 +87,15 @@ or using public rpc :
 ```
 forge script script/deployFactory.s.sol --rpc-url https://eth-sepolia.g.alchemy.com/v2/demo --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
 ```
+### Test Coverage
+```
+forge coverage
+```
+
+╭----------------------------+-----------------+-----------------+---------------+---------------╮
+| File                       | % Lines         | % Statements    | % Branches    | % Funcs       |
++================================================================================================+
+| src/factory.sol            | 80.00% (8/10)   | 87.50% (7/8)    | 50.00% (1/2)  | 66.67% (2/3)  |
+|----------------------------+-----------------+-----------------+---------------+---------------|
+| src/quickStarter.sol       | 100.00% (12/12) | 100.00% (10/10) | 66.67% (4/6)  | 100.00% (3/3) |
+╰----------------------------+-----------------+-----------------+---------------+---------------╯
