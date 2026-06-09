@@ -68,7 +68,7 @@ Hit a major architectural roadblock regarding data retrieval on the frontend and
 To track campaign ownership, I initially implemented a standard mapping:
 ```solidity
 mapping(address => address) public creatorToCampaign;
-
+```
 ## Day 6: Project Completion & Live Deployment
 
 Successfully completed the end-to-end decentralized crowdfunding application (**QuickFund**) within a 6-day timeline.
