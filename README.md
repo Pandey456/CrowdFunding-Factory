@@ -1,21 +1,63 @@
-## Foundry
+# CrowdFunding-Factory
+Trustless Crowdfunding Platform Using the Factory Pattern
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Live Demo: [QuickFund Live DApp](https://quickfund-sepolia.netlify.app)
+Sepolia Ehterscan : [View Factory contract on Explorer](https://sepolia.etherscan.io/address/0x8746b2f4B89A47B0A22a6173Bc3d36082125222E)
 
-Foundry consists of:
+## What is does
+A factory pattern DAPP where anyone can create a campaign giving Title and Goal ( in eth) and others can look at those campaign and invest, only the campaign creator can withdraw the funds.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Architecture
+ - factory.sol - spawns campaign contracts, tracks deployed campaigns by address
+ - quickStarter.sol - individual campaign contract with goal, contributors mapping and withdraw logic
 
-## Documentation
+```text
+    ┌────────────────────────────────────────────────────────┐
+       │                      factory.sol                       │
+       ├────────────────────────────────────────────────────────┤
+       │ 📄 State:                                              │
+       │   ├── campaigns (mapping: owner => campaign addresses) │
+       │   └── allCampaign (array: global list of all addresses)│
+       │                                                        │
+       │ ⚙️ Functions:                                           │
+       │   ├── CreateACampaign() ──┐                            │
+       │   └── getAllCampaign()    │                            │
+       └───────────────────────────┼────────────────────────────┘
+                                   │
+                             Deploys (New)
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │                    quickStarter.sol                    │
+       ├────────────────────────────────────────────────────────┤
+       │ 📄 State:                                              │
+       │   ├── owner (address)                                  │
+       │   ├── fee/goal (uint256) & title (string)              │
+       │   └── donarRecords (mapping: contributor => amount)    │
+       │                                                        │
+       │ ⚙️ Functions:                                           │
+       │   ├── donate()                                         │
+       │   └── withdraw()                                       │
+       └────────────────────────────────────────────────────────┘
+```
+## Test Coverage
+```
+forge coverage
+```
+Results:
 
-https://book.getfoundry.sh/
+```text
+╭----------------------------+-----------------+-----------------+---------------+---------------╮
+| File                       | % Lines         | % Statements    | % Branches    | % Funcs       |
++================================================================================================+
+| src/factory.sol            | 100.00% (10/10) | 100.00% (8/8)    | 50.00% (1/2) | 100.00% (3/3) |
+|----------------------------+-----------------+-----------------+---------------+---------------|
+| src/quickStarter.sol       | 100.00% (12/12) | 100.00% (10/10) | 66.67% (4/6)  | 100.00% (3/3) |
+╰----------------------------+-----------------+-----------------+---------------+---------------╯
+```
 
-## Usage
 
-### Build
+## Local Development
 
 ```shell
 $ forge build
@@ -65,7 +107,7 @@ $ anvil --help
 $ cast --help
 ```
 
-### Private Key - Deployment without .env file having private key.
+## Private Key - Deployment without .env file having private key.
 
 1. Initiating 
 ```
@@ -87,17 +129,3 @@ or using public rpc :
 ```
 forge script script/deployFactory.s.sol --rpc-url https://eth-sepolia.g.alchemy.com/v2/demo --account defaultKey --sender 0x8efdfcdf25fbdaf795bd636f57a0cee2a3848335 --broadcast
 ```
-## Test Coverage
-```
-forge coverage
-```
-### Test Coverage
-
-```text
-╭----------------------------+-----------------+-----------------+---------------+---------------╮
-| File                       | % Lines         | % Statements    | % Branches    | % Funcs       |
-+================================================================================================+
-| src/factory.sol            | 80.00% (8/10)   | 87.50% (7/8)    | 50.00% (1/2)  | 66.67% (2/3)  |
-|----------------------------+-----------------+-----------------+---------------+---------------|
-| src/quickStarter.sol       | 100.00% (12/12) | 100.00% (10/10) | 66.67% (4/6)  | 100.00% (3/3) |
-╰----------------------------+-----------------+-----------------+---------------+---------------╯

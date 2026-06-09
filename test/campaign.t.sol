@@ -64,4 +64,34 @@ contract CounterTest is Test {
         vm.prank(DONOR);
         qs.withdraw();
     }
+
+    function testGetAllCampaignsAndGlobalPush() public {
+        vm.prank(USER);
+        factory.CreateACampaign(5 ether, "User Campaign");
+
+        vm.prank(DONOR);
+        factory.CreateACampaign(2 ether, "Donor Campaign");
+
+        address[] memory allCampaigns = factory.getAllCampaign();
+
+        assertEq(
+            allCampaigns.length,
+            2,
+            "Global campaign array length mismatch"
+        );
+
+        address expectedUserCampaign = factory.getuserCampaign(USER)[0];
+        address expectedDonorCampaign = factory.getuserCampaign(DONOR)[0];
+
+        assertEq(
+            allCampaigns[0],
+            expectedUserCampaign,
+            "First campaign address mismatch"
+        );
+        assertEq(
+            allCampaigns[1],
+            expectedDonorCampaign,
+            "Second campaign address mismatch"
+        );
+    }
 }
